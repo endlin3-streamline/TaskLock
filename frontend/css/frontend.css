@@ -1,0 +1,257 @@
+/* ── Reset & Base ──────────────────────────────── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background-image: url('../images/f-background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── App Layout ────────────────────────────────── */
+.app {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Ensures compatibility for Safari browsers */
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; 
+    gap: 30px; 
+    align-items: start; 
+}
+
+@media (max-width: 992px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .app { padding: 15px; }
+    .navbar { margin: -15px -15px 30px -15px !important; }
+}
+
+/* ── Navbar ────────────────────────────────────── */
+.navbar {
+    background-color: #4f4745; 
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+}
+.navbar .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d1cfcf;
+    text-decoration: none;
+    cursor: pointer;
+}
+.navbar .nav-item:hover { color: #fff; }
+.navbar .nav-item.active { color: #e5b326; }
+
+/* ── Page Header ───────────────────────────────── */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* Centers the header directly above the grid */
+    max-width: 1150px; 
+    margin: 30px auto 20px auto; 
+    padding: 0 20px;
+}
+
+.page-header h1 { font-size: 33px; font-weight: 700; color: #3d2e2c; }
+.page-header .date { font-size: 13px; color: #3d2e2c; margin-top: 3px; }
+.score-badge { font-size: 13px; color: #3d2e2c; }
+.score-badge span { color: #f5c842; font-weight: 600; }
+
+.main-grid {
+    display: grid;
+    /* 330px for the left timer panel, the rest of the space goes to the task list */
+    grid-template-columns: 330px 1fr; 
+    gap: 30px; 
+    align-items: start; 
+    /* Keeps the dashboard compact, but wide enough (1150px) to prevent column clipping */
+    max-width: 1150px; 
+    margin: 0 auto; 
+    padding: 0 20px 50px 20px;
+}
+
+@media (max-width: 992px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .navbar { padding: 15px 20px; }
+}
+
+/* ── Focus Card (Left Panel) ───────────────────── */
+.focus-card {
+    background: #f0ebe4;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+}
+.focus-topo { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.35; }
+.focus-inner { position: relative; z-index: 1; padding: 14px; }
+.focus-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f5c842; color: #3d2e2c; font-size: 11px;
+    font-weight: 700; padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;
+}
+.focus-timer-wrap { display: flex; justify-content: center; margin-bottom: 10px; }
+.focus-timer { width: 96px; height: 96px; position: relative; display: flex; align-items: center; justify-content: center; }
+.focus-timer svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.timer-track { fill: none; stroke: #e0d8cf; stroke-width: 5; }
+.timer-progress { fill: none; stroke: #f5c842; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 263; transition: stroke-dashoffset 1s linear; }
+.timer-text { font-size: 18px; font-weight: 700; color: #3d2e2c; position: relative; z-index: 1; }
+.focus-task-name { text-align: center; font-size: 13px; font-weight: 600; color: #3d2e2c; margin-bottom: 12px; }
+.focus-actions { display: flex; gap: 8px; }
+.btn-focus { flex: 1; padding: 8px 0; border: none; border-radius: 100px; font-size: 11px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
+.btn-focus:hover { opacity: 0.85; }
+.btn-focus.primary { padding: 8px 10px; background: #3d2e2c; color: #fff;}
+.btn-focus.secondary { background: #f5c842; color: #3d2e2c; }
+
+/* ── Summary Card ──────────────────────────────── */
+.summary-card { background: rgba(0,0,0,0.15); border-radius: 10px; padding: 12px 14px; margin: 10px 14px 14px; }
+.summary-title { font-size: 11px; font-weight: 600; color: #9a7a78; margin-bottom: 10px; }
+.summary-row { display: flex; gap: 8px; }
+.summary-item { flex: 1; background: #5a3f3d; border-radius: 8px; padding: 8px 10px; }
+.summary-item-label { font-size: 10px; color: #c4a8a6; margin-bottom: 4px; }
+.summary-item-value { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #fff; }
+.icon-done { color: #5dcaa5; }
+.icon-lock { color: #f5c842; }
+
+/* ── Task List Container ───────────────────────── */
+.task-card {
+    background: #3d2e2c;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.task-card-header { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 15px; }
+
+/* ── Accordion & Grid Layout (The Fixed Setup) ─── */
+.task-list-header, .task-row {
+    display: grid;
+    grid-template-columns: 40px 2fr 150px 100px 120px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.task-list-header {
+    color: #B0A8A6;
+    font-size: 13px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #524442;
+    margin-bottom: 10px;
+}
+
+.task-row {
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+.task-row:hover { background-color: rgba(255,255,255,0.05); }
+
+.batch-group { margin-bottom: 10px; }
+.batch-trigger {
+    background-color: #453836;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #fff;
+    transition: background 0.2s;
+}
+.batch-trigger:hover { background-color: #524442; }
+.batch-trigger i { transition: transform 0.3s; }
+.batch-trigger.active i { transform: rotate(90deg); }
+
+.batch-content {
+    display: none;
+    padding: 10px 0 10px 20px;
+    border-left: 2px solid #524442;
+    margin-left: 20px;
+}
+.batch-content.open { display: block; }
+
+.milestone-container { display: none; padding-bottom: 10px; }
+.milestone-container.open { display: block; }
+
+.milestone-item {
+    display: grid;
+    grid-template-columns: calc(40px + 2fr + 15px) 150px 1fr; 
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    border-bottom: 1px dashed #524442;
+    width: 100%;
+}
+
+/* ── Badges & UI Elements ──────────────────────── */
+.custom-checkbox {
+    width: 20px; height: 20px; border-radius: 4px;
+    border: 2px solid #B0A8A6; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s;
+}
+.custom-checkbox.checked { background-color: #4A90E2; border-color: #4A90E2; }
+.custom-checkbox i { color: white; font-size: 12px; display: none; }
+.custom-checkbox.checked i { display: block; }
+
+.badge {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; text-align: center;
+}
+.badge-high { background-color: #E74C3C; color: white; }
+.badge-medium { background-color: #F5A623; color: white; }
+.badge-low { background-color: #27AE60; color: white; }
+
+/* ── Forms ─────────────────────────────────────── */
+.add-task-btn {
+    width: 100%; padding: 15px; background: transparent;
+    border: 1px dashed #524442; color: #FFFFFF; border-radius: 8px;
+    cursor: pointer; margin-top: 15px; transition: background 0.2s;
+}
+.add-task-btn:hover { background: rgba(255,255,255,0.05); }
+
+.creation-forms {
+    display: none; background: #3b322d; padding: 20px;
+    border-radius: 12px; margin-top: 15px; border: 1px solid #524442;
+}
+.creation-forms.open { display: block; }
+.form-row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center; }

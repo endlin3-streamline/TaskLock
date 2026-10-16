@@ -1,0 +1,113 @@
+/* ── Main Layout & Header ──────────────────────── */
+.page-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    max-width: 1150px; margin: 30px auto 20px auto; padding: 0 20px; color: white;
+}
+.page-header h1 { font-size: 33px; font-weight: 700; }
+.page-header .date { font-size: 13px; color: #3d2e2c; margin-top: 3px; }
+.score-badge { font-size: 13px; color: #3d2e2c; }
+.score-badge span { color: #f5c842; font-weight: 600; }
+
+.main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    max-width: 1150px; margin: 0 auto; padding: 0 20px;
+    align-items: start;
+}
+
+/* ── Left Sidebar (Controls & Tasks) ───────────── */
+.control-panel {
+    background-color: #41403c; border-radius: 14px; padding: 25px;
+    color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.control-panel h3 { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #FFFFFF; }
+
+.dropdown-form select {
+    width: 100%; padding: 10px; border-radius: 6px; border: none;
+    background-color: #5e4e4d; color: white; margin-bottom: 15px;
+    font-size: 14px; outline: none; cursor: pointer;
+}
+
+/* Pending Task List Items */
+.pending-task-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+.pending-task-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background-color: #5e4e4d; border-radius: 20px; padding: 8px 10px 8px 15px;
+    font-size: 14px;
+}
+.priority-badge {
+    padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 11px; color: white;
+}
+
+.summary-box {
+    margin-top: 30px; background-color: #c9c5ba;
+    padding: 15px; border-radius: 12px; color: #333;
+}
+
+/* ── Right Side (Original Calendar Style) ──────── */
+.calendar-card {
+    background-color: #e8e8e8; border-radius: 14px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); overflow: hidden;
+    display: flex; flex-direction: column;
+}
+
+.calendar-header-days {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; font-weight: 600; font-size: 14px; color: white;
+    background-color: #1a1a1a; padding: 12px 0;
+}
+
+.calendar-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 1px; background-color: #cfcfcf;
+}
+
+.day-cell {
+    background-color: #eeeeee; min-height: 110px; padding: 8px;
+    display: flex; flex-direction: column; gap: 4px;
+}
+
+.day-cell.empty { background-color: transparent; }
+
+.day-number {
+    font-size: 14px; font-weight: 600; color: #a3a3a3; align-self: flex-start; margin-bottom: 5px;
+}
+
+.day-cell.today .day-number {
+    background-color: #3b82f6; color: white; width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%;
+}
+
+/* ── Task Badges inside Calendar Grid ──────────── */
+.task-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 6px;
+    border-radius: 4px;
+    color: white;
+
+    line-height: 1.3;
+    text-align: left;
+}
+
+.badge-high { background-color: #e33030; }
+.badge-medium { background-color: #eba417; }
+.badge-low { background-color: #3fba46; }
+.badge-completed { background-color: transparent; border: 1px dashed #7a6a68; color: #7a6a68; text-decoration: line-through; }
+
+
+/* Updated EIF Holiday Badge Style */
+.badge-holiday { 
+    background-color: rgba(227, 48, 48, 0.1);
+    border: 1px solid #e33030;
+    color: #e33030; 
+    margin-bottom: 4px;
+    
+    /* Overrides the single-row restriction to allow wrapping
+    white-space: normal !important; 
+    overflow: visible;
+    line-height: 1.3;
+    text-align: left; */
+}

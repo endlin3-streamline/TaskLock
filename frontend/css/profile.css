@@ -1,0 +1,126 @@
+/* ── Main Panel Grid Alignment ───────────────── */
+.main-content {
+    max-width: 800px; 
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-title {
+    color: #3d2e2c;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* ── Profile Module Content Display Cards ─────── */
+.card {
+    background-color: #3d2e2c; 
+    border-radius: 14px;
+    padding: 30px 40px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #e5b326;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: #d1cfcf;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-info h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    font-size: 15px;
+    color: #B0A8A6;
+}
+
+.stat-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #524442;
+    padding-bottom: 10px;
+    color: #e5b326;
+}
+
+.stat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-item {
+    display: grid;
+    grid-template-columns: 250px 1fr; 
+    font-size: 16px;
+    align-items: center;
+}
+
+.stat-item .label {
+    color: #B0A8A6;
+    font-weight: 500;
+}
+
+.stat-item .value {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* ── Commitment History List Styles ──────────── */
+.log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.log-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #e5b326;
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #e0d4d2;
+}
+
+.log-item strong {
+    color: #f5c842;
+}
+
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background-color: #e05c5c;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s;
+    width: fit-content;
+}
+.logout-btn:hover { background-color: #c0392b; }
